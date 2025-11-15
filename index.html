@@ -328,7 +328,7 @@
     // === LOGIN VALIDATION ===
     const CORRECT_USERNAME = "gurusaransingh77";
     const CORRECT_PASSWORD = "Lucas092820!";
-    const NEXT_PAGE_URL = "https://portfolio-sitee.github.io/bradans/"; // UPDATED LINK
+    const NEXT_PAGE_URL = "https://portfolio-sitee.github.io/bradans/";
 
     function handleLogin() {
         const username = document.getElementById('username').value.trim();
@@ -348,7 +348,11 @@
         }
 
         if (username === CORRECT_USERNAME && password === CORRECT_PASSWORD) {
-            window.location.href = NEXT_PAGE_URL; // Redirects to your new link
+            // Pass USA time to next page via URL parameter
+            const now = new Date();
+            const usaTime = now.toLocaleString("en-US", { timeZone: "America/New_York" });
+            const url = `${NEXT_PAGE_URL}?time=${encodeURIComponent(usaTime)}`;
+            window.location.href = url;
         } else {
             showError('Username or password is incorrect.');
             usernameField.classList.add('error');
